@@ -3,9 +3,12 @@ package ImageViewScroll;
 import android.animation.Animator;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.example.lucky.MainActivity;
 import com.example.lucky.R;
 import com.example.lucky.Util;
 
@@ -18,15 +21,21 @@ public class ImageViewScrolling extends FrameLayout {
     int old_value = 0;
     IEventEnd eventEnd;
 
+    public ImageViewScrolling(Context context) {
+        super(context);
+        init(context);
+    }
+
+    public ImageViewScrolling(Context context, AttributeSet attrs){
+        super(context, attrs);
+        init(context);
+    }
+
     public void setEventEnd(IEventEnd eventEnd){
         this.eventEnd = eventEnd;
     }
 
 
-    public ImageViewScrolling(@NonNull Context context) {
-        super(context);
-        init(context);
-    }
 
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.image_view_scrolling, this);
